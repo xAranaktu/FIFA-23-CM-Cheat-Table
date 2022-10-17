@@ -1,3 +1,11 @@
+v23.1.0.2:
+    - Added Training -> Created Player CM -> Grade Achieved XP
+    - Added Play As Player:
+        - Wage & Funds
+        - Manager Reputation & Squad Role
+        - Create Transfer Offer
+        - 999 Skill Points
+
 v23.1.0.1:
     - Added Global Transfer Network -> Reveal player data (scouting players not needed)
     - Added Free & Unlimited Releasing Players
