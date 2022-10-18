@@ -1,3 +1,13 @@
+v23.1.0.3:
+    - Added to Fitness:
+        - Restore to full after training session
+    - Added to Sharpness:
+        - Set given value on change -> Sharpness to set
+    - Added Manager:
+        - Unsackable
+        - Never Retire
+        - Make ManagerID editable
+
 v23.1.0.2:
     - Added Training -> Created Player CM -> Grade Achieved XP
     - Added Play As Player:
