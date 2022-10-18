@@ -33,7 +33,7 @@ For example you can edit players (potential, attributes, name etc.), transfer bu
 
 ***
 
-![](https://i.imgur.com/XjdJ7dx.png)
+![](https://i.imgur.com/A9V8U0F.png)
 ![](https://i.imgur.com/5SXaStY.png)
 ![](https://i.imgur.com/GemoWvH.png)
 ![](https://i.imgur.com/RmVpokr.png)
