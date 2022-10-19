@@ -1,3 +1,19 @@
+v23.1.0.4:
+    - Added Youth Academy:
+        - Generate new report
+        - Generate players with custom ID
+        - Reveal Ovr & Pot
+        - Send scout to any country
+        - Allow multiple scouts in the same country
+        - Mission doesn't cost anything
+        - 15 Players Per Report
+        - Age Range
+        - Attribute Modifier Range
+        - Potential Range
+        - 100% chance for 5* weak foot
+        - 100% chance for 5* skill moves
+        - Min Age for Promotion
+
 v23.1.0.3:
     - Added to Fitness:
         - Restore to full after training session
