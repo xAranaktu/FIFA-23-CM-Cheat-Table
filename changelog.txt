@@ -1,3 +1,25 @@
+v23.1.0.5:
+    - Added Gameplay:
+        - Match Timer
+        - Unlimited Substitutions (USER)
+        - Disable Substitutions (CPU)
+        - Injured Players
+        - 5 stars skill moves
+        - NeverTired players
+        - Tired Players
+        - Goals scored
+        - Never Tired Player IDs
+    - Added to Training:
+        - Manager CM:
+            - Always A
+            - Players Development
+    - Added Non-CM Related:
+        - Dont Pause Game on AltTab
+    - Added Side Changer:
+        - CPU vs CPU
+        - Control Home Team
+        - Control Away Team
+
 v23.1.0.4:
     - Added Youth Academy:
         - Generate new report
