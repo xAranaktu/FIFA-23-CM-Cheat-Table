@@ -85,7 +85,7 @@ AOB_PATTERNS = {
 
     YAMaxPerReport = '47 8B 44 FE 58',
     VProSkillPoints = '8B 48 04 89 8B 8C 06 00 00',
-    CreatedPlayerTrainingXP = '89 46 04 89 3E',
+    CreatedPlayerTrainingXP = '49 8B 46 50 4D 8D 4E 40',
 
     GenNewYAReport = '83 C0 0E F2 0F 11 54 24 2C',
     fnGenYAReport = '40 55 57 48 8D 6C 24 ?? 48 81 EC ?? ?? ?? ?? 48 8B 01 48 8B F9 FF 50 08 84 C0 0F 84 ?? ?? ?? ?? 48 8B 57 08 48 89 9C 24 ?? ?? ?? ?? 4C 89 B4 24 ?? ?? ?? ??',
