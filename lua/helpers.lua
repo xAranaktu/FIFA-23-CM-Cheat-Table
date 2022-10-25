@@ -298,6 +298,17 @@ function get_mode_manager_impl_ptr(manager_name)
     return result
 end
 
+-- BoardManager Start
+function clear_sack()
+    local mgr = get_mode_manager_impl_ptr("BoardManager")
+    if not mgr or mgr == 0 then return end
+    --print(string.format("BoardManager %X", mgr))
+    writeInteger(mgr + BoardManager_STRUCT["SACK_BOOL_1"], 0)
+
+end
+
+-- BoardManager End
+
 -- ScoutManager Start
 function ya_reveal_data()
     local mgr = get_mode_manager_impl_ptr("YouthPlayerUtil")
@@ -502,7 +513,7 @@ function get_player_fitness_addr(playerid)
     if not player_found then
         return 0
     end
-    -- self.logger:debug(string.format("Player Fitness found at: %X", current_addr))
+    -- print(string.format("Player Fitness found at: %X", current_addr))
     return current_addr
 end
 

@@ -3228,7 +3228,7 @@ function thisFormManager:load_player_sharpness(playerid)
     end
 
     fn_comps_vis(true)
-    self.logger:debug(string.format("Player Sharpness found at %X", current_addr))
+    -- print(string.format("Player Sharpness found at %X", current_addr))
     local sharpness = readBytes(current_addr + PLAYERFITESS_STRUCT["sharpness_value"], 1)
     self.frm.SharpnessEdit.Text = sharpness
 end

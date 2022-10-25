@@ -63,16 +63,15 @@ AOB_PATTERNS = {
     AllowTransferAppBtnClick = '44 8B F0 89 45 67',
     AllowSign = '41 FF D1 89 45 50',
     AllowLoanApp = '44 8B F8 89 45 50',
-    CustomManagerEditable = 'C7 45 64 0F 27 00 00',
-    ManagerNeverRetire = '8B B0 C4 02 00 00 8B 59',
-    UpdateManagerRating = '42 8D 04 2B 85 C0',
-    GetManagerRating = 'C3 CC CC CC CC CC 48 8B 41 08 8B 40 08',
+    CustomManagerEditable = 'C7 85 C4 00 00 00 0F 27 00 00 39',
+    ManagerNeverRetire = '8B AB 24 03 00 00 8B',
+    UpdateManagerRating = '8B 00 4C 8D 9C 24 F8 00 00 00',
+    GetManagerRating = '48 8D 05 ?? ?? ?? ?? 4D 89 B4 24 ?? ?? ?? ?? 41 BD',
     IntJobOffer = '48 2B 88 80 01 00 00 48 B8 89 88 88 88 88 88 88 88 48 F7 E9 48 03 D1 48 C1 FA 05 48 8B C2 48 C1 E8 3F 48 03 D0 85 D2',
     ClubJobOfferAlwaysAccept = 'FF 50 08 3B 47 2C',
     ClubJobOffer = 'FF 50 78 48 8B BE D8 00 00 00',
-    OnSharpnessChange = '41 88 71 24 48 8B 5C 24 50',
-    OnStaminaChange1 = '0F BE C2 88 51 11',
-    OnStaminaChange2 = '88 43 11 0F B6 47 0D',
+    OnSharpnessChange = '41 88 69 24 48 83 C4 30',
+    OnStaminaChange1 = '88 51 11 3B 46 10',
     EditPlayerName = 'C6 44 24 20 00 C6 44 24 2F 0F 48 C7 44 24 30 00 00 00 00 80 78 01',
 
     ChangeStadium = '41 8B B4 24 C4 18 00 00',
@@ -7099,6 +7098,7 @@ COMP_NAMES = {
 MODE_MANAGERS_OFFSETS = {
     IFCEInterface = 0x38,
     TransferIO = 0x238,
+    BoardManager = 0x2F8,
     FinanceManager = 0x578,
     FitnessManager = 0x5B8,
     TcmFinanceManager = 0x7F8,
@@ -7122,6 +7122,12 @@ Action_STRUCT = {
 
     action_date = 0x0,
     action_type = 0x8
+}
+
+BoardManager_STRUCT = {
+    SACK_BOOL_1 = 0x94,
+    SACK_BOOL_2 = 0x95,
+    SACK_BOOL_3 = 0x96
 }
 
 NegotiationsStorageDaoImpl_STRUCT = {
