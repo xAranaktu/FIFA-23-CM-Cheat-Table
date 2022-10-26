@@ -1,3 +1,10 @@
+v23.1.0.7:
+    - Added Match Settings:
+        - Change Stadium
+        - Half Length
+        - Time of Day
+        - Weather
+
 v23.1.0.6:
     - Added Hire Scouts:
         - Free 5/5 Scouts
