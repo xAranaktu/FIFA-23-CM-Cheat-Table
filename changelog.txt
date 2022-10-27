@@ -1,3 +1,18 @@
+v23.1.0.8:
+    - Added:
+        - Custom Lua scripts -> "mass_edit_squadrole.lua"
+        - Non-CM  Related -> Game Settings -> Camera:
+            - Camera Height
+            - Camera Zoom
+            - Pro Camera Zoom
+            - Pro Camera Speed
+            - Pro Camera Swing
+    - Fixed:
+        - Camera angle during penalties when playing with "Match Timer" script activated
+        - No money income when "Free & Unlimited Releasing Players" is activated
+        - Youth Academy -> "15 Players Per Report" now should always guarantee 15 players
+        - Bonus Exp and Exp Multiplier in Training -> Manager CM -> Players Development
+
 v23.1.0.7:
     - Added Match Settings:
         - Change Stadium
