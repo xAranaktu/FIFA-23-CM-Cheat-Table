@@ -471,6 +471,20 @@ function TableManager:init_ptrs()
             get_mode_manager_impl_ptr("PlayerGrowthManager")
         ))
     end
+
+    ----------
+
+    writeInteger("iMaxPerReport", 15)
+
+    writeInteger("YAPotRangeL", 85)
+    writeInteger("YAPotRangeH", 99)
+
+    writeInteger("YAAttribRangeL", 1)
+    writeInteger("YAAttribRangeSecL", 1)
+
+    writeInteger("YAAttribRangeH", 15)
+    writeInteger("YAAttribRangeSecH", 15)
+
 end
 
 function TableManager:autoactivate_scripts()
@@ -664,8 +678,7 @@ function TableManager:on_attach_to_process()
     self:autoactivate_scripts()
     self:init_ptrs()
     
-    -- TODO: Update FIFA 23
-    --self:setup_internal_calls()
+    self:setup_internal_calls()
 
     self:style_forms()
 

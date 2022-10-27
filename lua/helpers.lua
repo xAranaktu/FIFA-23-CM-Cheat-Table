@@ -309,26 +309,150 @@ end
 
 -- BoardManager End
 
--- ScoutManager Start
-function ya_reveal_data()
+-- YouthPlayerUtil Start
+function ya_apply_pot_range(bEnabled)
     local mgr = get_mode_manager_impl_ptr("YouthPlayerUtil")
     if not mgr or mgr == 0 then return end
-    --print(string.format("%X", mgr))
-    local ya_settings = readPointer(mgr + YOUTHPLAYERUTIL_STRUCT["settings_offset"])
-    local current_addr = ya_settings + YOUTHPLAYERUTIL_STRUCT["pot_var_off"]
-    --print(string.format("%X", current_addr))
 
-    local _max = YOUTHPLAYERUTIL_STRUCT["variance_n"] * 2
+    local count = 4
+    local current_addr = readPointer(mgr + YOUTHPLAYERUTIL_STRUCT["settings_offset"]) + YOUTHPLAYERUTIL_STRUCT["pot_range_off"]
 
-    -- Max Display ovr/pot = 99
-    writeInteger(ya_settings + YOUTHPLAYERUTIL_STRUCT["max_display_val_offset"], 99)
+    local low = readInteger("YAPotRangeL")
+    local high = readInteger("YAPotRangeH")
 
-    for i=1, _max do
-        writeInteger(current_addr, 0)
+    for i=1, count do
+        writeInteger(current_addr, low)
+        current_addr = current_addr + 4
+
+        writeInteger(current_addr, high)
         current_addr = current_addr + 4
     end
 end
 
+function ya_apply_attr_range(bEnabled)
+    local mgr = get_mode_manager_impl_ptr("YouthPlayerUtil")
+    if not mgr or mgr == 0 then return end
+
+    local count = 4
+    local current_addr = readPointer(mgr + YOUTHPLAYERUTIL_STRUCT["settings_offset"]) + YOUTHPLAYERUTIL_STRUCT["att_range_off"]
+
+    local low = readInteger("YAAttribRangeL")
+    local high = readInteger("YAAttribRangeH")
+
+    local low_sec = readInteger("YAAttribRangeSecL")
+    local high_sec = readInteger("YAAttribRangeSecH")
+
+    for i=1, count do
+        writeInteger(current_addr, low)
+        current_addr = current_addr + 4
+
+        writeInteger(current_addr, high)
+        current_addr = current_addr + 4
+
+        writeInteger(current_addr, low_sec)
+        current_addr = current_addr + 4
+
+        writeInteger(current_addr, high_sec)
+        current_addr = current_addr + 4
+    end
+end
+
+gOriginalSkillMoveSettings = {}
+function ya_always_best_sm(bEnabled)
+    local mgr = get_mode_manager_impl_ptr("YouthPlayerUtil")
+    if not mgr or mgr == 0 then return end
+
+    local count = 50
+    local current_addr = readPointer(mgr + YOUTHPLAYERUTIL_STRUCT["settings_offset"]) + YOUTHPLAYERUTIL_STRUCT["sm_offset"]
+    
+    if (bEnabled) then
+        local j = 0
+        for i=1, count do
+            table.insert(gOriginalSkillMoveSettings, readInteger(current_addr))
+
+            j = j + 1
+
+            if (j < 5) then
+                writeInteger(current_addr, 0)
+            else
+                writeInteger(current_addr, 100) -- FACTOR_%d_SKILL_LEVEL_5_CHANCE
+                j = 0
+            end
+
+            current_addr = current_addr + 4
+        end
+    else
+        for i=1, count do
+            writeInteger(current_addr, gOriginalSkillMoveSettings[i])
+
+            current_addr = current_addr + 4
+        end
+        gOriginalSkillMoveSettings = {}
+    end
+end
+
+gOriginalWeakFootSettings = {}
+function ya_always_best_wf(bEnabled)
+    local mgr = get_mode_manager_impl_ptr("YouthPlayerUtil")
+    if not mgr or mgr == 0 then return end
+
+    local count = 5
+    local current_addr = readPointer(mgr + YOUTHPLAYERUTIL_STRUCT["settings_offset"]) + YOUTHPLAYERUTIL_STRUCT["wf_offset"]
+    if (bEnabled) then
+        local j = 0
+        for i=1, count do
+            table.insert(gOriginalWeakFootSettings, readInteger(current_addr))
+
+            j = j + 1
+
+            if (j < 5) then
+                writeInteger(current_addr, 0)
+            else
+                writeInteger(current_addr, 100)
+                j = 0
+            end
+
+            current_addr = current_addr + 4
+        end
+    else
+        for i=1, count do
+            writeInteger(current_addr, gOriginalWeakFootSettings[i])
+
+            current_addr = current_addr + 4
+        end
+        gOriginalWeakFootSettings = {}
+    end
+end
+
+gOriginalVarianceSettings = {}
+function ya_reveal_data(bEnabled)
+    local mgr = get_mode_manager_impl_ptr("YouthPlayerUtil")
+    if not mgr or mgr == 0 then return end
+
+    local count = 13
+    local ya_settings = readPointer(mgr + YOUTHPLAYERUTIL_STRUCT["settings_offset"])
+    local current_addr = ya_settings + YOUTHPLAYERUTIL_STRUCT["pot_var_off"]
+    if (bEnabled) then
+        for i=1, count do
+            table.insert(gOriginalVarianceSettings, readInteger(current_addr))
+
+            writeInteger(current_addr, 0)
+            current_addr = current_addr + 4
+        end
+        writeInteger(ya_settings + YOUTHPLAYERUTIL_STRUCT["max_display_val_offset"], 99)
+
+    else
+        for i=1, count do
+            writeInteger(current_addr, gOriginalVarianceSettings[i])
+
+            current_addr = current_addr + 4
+        end
+        gOriginalVarianceSettings = {}
+    end
+end
+-- YouthPlayerUtil End
+
+-- ScoutManager Start
 function ya_free_missions()
     local mgr = get_mode_manager_impl_ptr("ScoutManager")
     if not mgr or mgr == 0 then return end
@@ -349,7 +473,7 @@ function ya_max_per_report()
 
     local _max = SCOUTMANAGER_STRUCT["max_exp"] * SCOUTMANAGER_STRUCT["ranges_num"]
     local current_addr = mgr + SCOUTMANAGER_STRUCT["players_per_report_off"]
-    local max_per_report = 15
+    local max_per_report = readInteger("iMaxPerReport")
 
     for i=1, _max do
         writeInteger(current_addr, max_per_report)

@@ -38,7 +38,7 @@ CT_MEMORY_RECORDS = {
 
 AOB_PATTERNS = {
     fnGetColData = '40 53 48 83 EC 30 4C 8B D2 4D 8B D8 8B 12 8D 42 FD 83 F8 01',
-    AltTab = '48 83 EC 48 48 83 3D ?? ?? ?? ?? ?? 74 4F 48 8D 0D',
+    AltTab = 'E8 ?? ?? ?? ?? 48 85 C0 74 4F 48 8D 0D ?? ?? ?? ?? E8 ?? ?? ?? ?? C7 44 24',
     pModeManagers = '4C 89 25 ?? ?? ?? ?? 4C 89 35 ?? ?? ?? ?? 48 89 0D ?? ?? ?? ?? EB 03',
     DatabaseBasePtr = 'E8 ?? ?? ?? ?? 48 8D 0D ?? ?? ?? ?? 48 89 05 ?? ?? ?? ?? FF 15 ?? ?? ?? ?? 8B 44 24 30',
     ScreenID = '49 8B D4 A8 01 4C 8B C6 48 0F 45 15',
@@ -48,16 +48,16 @@ AOB_PATTERNS = {
     ReleasePlayerFee = '41 8B 55 10 4C 63 F0',
     ReleasePlayerFeeTwo = '49 63 C0 48 01 01',
     HireScout = '89 84 24 28 01 00 00 48 8D 4C 24 60',
-    YouthAcademyAllCountriesAvailable = '8B 0C 90 41 8D 57 21',
-    YACountryIsBeingScouted = '40 80 FE 01 75 0C 4C 8D 05',
+    YouthAcademyAllCountriesAvailable = '8B 0C 90 89 4C 24 48',
+    YACountryIsBeingScouted = '80 FB 01 75 11 E8',
     SideManipulator = '48 8B 84 CF 18 01 00 00 83',
-    PGMApplyXp = 'F3 0F 2C C1 41 01 07',
-    CoachTrainingAlwaysA = '66 C7 46 04 01 01 8B',
-    MatchScore = '8B 90 B4 26 02 00',
-    MatchTimer = '8B 41 50 89 47 10',
-    DisableSubstitutions = '44 8B B4 1E 5C A7 00 00',
-    IngameStamina = '89 83 A0 04 00 00 8B 47',
-    UnlimitedSubstitutions = '8B 84 01 0C 9F 00 00',
+    PGMApplyXp = 'F3 0F 2C C0 41 01 04 24 48',
+    CoachTrainingAlwaysA = '41 0F B6 47 0B 3C',
+    MatchScore = '8B 90 B8 26 02 00',
+    MatchTimer = '49 8B 8D 90 0A 00 00 4C 8B',
+    DisableSubstitutions = '49 63 84 1E BC B6 00 00',
+    IngameStamina = '48 8B F1 4C 8B F2 48 8B 89 58',
+    UnlimitedSubstitutions = '48 69 CF 34 04 00 00',
     EditReleaseClause = '8B 48 08 83 F9 FF 74 06 89 8B',
     AllowTransferAppThTxt = '8B D8 83 F8 0E 77',
     AllowTransferAppBtnClick = '44 8B F0 89 45 67',
@@ -86,13 +86,9 @@ AOB_PATTERNS = {
     VProSkillPoints = '8B 48 04 89 8B 8C 06 00 00',
     CreatedPlayerTrainingXP = '49 8B 46 50 4D 8D 4E 40',
 
-    GenNewYAReport = '83 C0 0E F2 0F 11 54 24 2C',
-    fnGenYAReport = '40 55 57 48 8D 6C 24 ?? 48 81 EC ?? ?? ?? ?? 48 8B 01 48 8B F9 FF 50 08 84 C0 0F 84 ?? ?? ?? ?? 48 8B 57 08 48 89 9C 24 ?? ?? ?? ?? 4C 89 B4 24 ?? ?? ?? ??',
-    YouthAcademyGeneratePlayer = '28 FF FF FF FF 48 8B 5C 24 70',
-    YASomeScoutIni = '48 48 8B 07 48 8B 80 98 01 00 00',
-
-    -- On view scout report
-    YAYouthPlayerUtilSettings = '48 8B 51 18 48 8D 8D ?? ?? ?? ?? 48 83 C2 08 E8 ?? ?? ?? ?? 44 8B 85 ?? ?? ?? ?? 45 8B F8 48 63 44 24',
+    GenNewYAReport = '3B 44 24 20 48 8D 4C 24 20',
+    fnGenYAReport = '40 55 53 56 57 41 57 48 8D 6C 24 ?? 48 81 EC ?? ?? ?? ?? 48 8B 59 08 4C 8B F9 48 8D 4C 24',
+    YouthAcademyGeneratePlayer = '48 8D 8C 24 80 00 00 00 E8 8D 68',
 
     FreezeLineup = '48 89 5C 24 ?? 48 89 74 24 ?? 57 48 83 EC 20 41 83 38 FF 49 8B F8 48 8B 01 8B F2 48 8B D9 75 0B 49 8B D0 FF 90',
     ContractNeg = '48 8B 50 38 48 83 EA 40 49 FF 60 08 CC CC CC CC CC',
@@ -7314,10 +7310,13 @@ FCEData_PlayerStats_STRUCT = {
 }
 
 YOUTHPLAYERUTIL_STRUCT = {
-    variance_n = 6,
     settings_offset = 0x18,
+    pot_range_off = 0x14,
+    att_range_off = 0x34,
     pot_var_off = 0x798,
-    max_display_val_offset = 0x7CC
+    max_display_val_offset = 0x7CC,
+    wf_offset = 0x854,
+    sm_offset = 0x8A8,
 }
 
 TRANSFER_MANAGER_STRUCT = {
@@ -7329,8 +7328,8 @@ SCOUTMANAGER_STRUCT = {
     max_exp = 5,
     max_know = 5,
     -- EXPERIENCE_1_PERC_FIND_PLAYERS_RANGE_0
-    base_mission_cost_off = 0x28,
-    players_per_report_off = 0x54,
+    base_mission_cost_off = 0x24,
+    players_per_report_off = 0x3C,
 
 }
 
