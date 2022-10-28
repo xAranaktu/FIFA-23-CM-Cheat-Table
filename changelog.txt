@@ -1,7 +1,17 @@
+v23.1.0.9:
+    - Added to Non-CM Related:
+        - Free Fly Camera
+    - Added Player Contract:
+        - Disable negotiation status checks
+    - Added Transfer HUB:
+        - Change Release Clause value to 1
+        - Allow Transfer approach
+        - Allow Loan approach
+
 v23.1.0.8:
     - Added:
         - Custom Lua scripts -> "mass_edit_squadrole.lua"
-        - Non-CM  Related -> Game Settings -> Camera:
+        - Non-CM Related -> Game Settings -> Camera:
             - Camera Height
             - Camera Zoom
             - Pro Camera Zoom
