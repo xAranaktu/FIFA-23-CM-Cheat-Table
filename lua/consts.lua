@@ -47,7 +47,7 @@ AOB_PATTERNS = {
     ReleasePlayerMsgBox = 'FF 94 24 C0 00 00 00 89 44 24 60',
     ReleasePlayerFee = '41 8B 55 10 4C 63 F0',
     ReleasePlayerFeeTwo = '49 63 C0 48 01 01',
-    HireScout = '89 84 24 28 01 00 00 48 8D 4C 24 60',
+    HireScout = '89 45 58 48 8D 4D 90',
     YouthAcademyAllCountriesAvailable = '8B 0C 90 89 4C 24 48',
     YACountryIsBeingScouted = '80 FB 01 75 11 E8',
     SideManipulator = '48 8B 84 CF 18 01 00 00 83',
@@ -67,9 +67,8 @@ AOB_PATTERNS = {
     ManagerNeverRetire = '8B AB 24 03 00 00 8B',
     UpdateManagerRating = '8B 00 4C 8D 9C 24 F8 00 00 00',
     GetManagerRating = '48 8D 05 ?? ?? ?? ?? 4D 89 B4 24 ?? ?? ?? ?? 41 BD',
-    IntJobOffer = '48 2B 88 80 01 00 00 48 B8 89 88 88 88 88 88 88 88 48 F7 E9 48 03 D1 48 C1 FA 05 48 8B C2 48 C1 E8 3F 48 03 D0 85 D2',
-    ClubJobOfferAlwaysAccept = 'FF 50 08 3B 47 2C',
-    ClubJobOffer = 'FF 50 78 48 8B BE D8 00 00 00',
+    ClubJobOfferAlwaysAccept = 'FF 50 08 3B 46 2C',
+    ClubJobOffer = 'FF 50 78 49 8B 9F D8 00 00 00',
     OnSharpnessChange = '41 88 69 24 48 83 C4 30',
     OnStaminaChange1 = '88 51 11 3B 46 10',
     EditPlayerName = 'C6 44 24 20 00 C6 44 24 2F 0F 48 C7 44 24 30 00 00 00 00 80 78 01',
@@ -7097,6 +7096,7 @@ MODE_MANAGERS_OFFSETS = {
     BoardManager = 0x2F8,
     FinanceManager = 0x578,
     FitnessManager = 0x5B8,
+    InternationalsManager = 0x698,
     TcmFinanceManager = 0x7F8,
     PlayerContractManager = 0x918,
     PlayerDataRevealManager = 0x938,
@@ -7107,6 +7107,12 @@ MODE_MANAGERS_OFFSETS = {
     ScoutManager = 0xB58,
     TransferManager = 0xF38,
     YouthPlayerUtil = 0xFB8,
+}
+
+InternationalsManager_STRUCT = {
+    to_offers = 0x28,
+    offer_sz = 0x3C,
+    offers_begin = 0x180
 }
 
 NegotiationsStorageDao_STRUCT = {

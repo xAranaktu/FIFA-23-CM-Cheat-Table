@@ -309,6 +309,49 @@ end
 
 -- BoardManager End
 
+-- InternationalsManager START
+
+function international_job_offer(bEnabled)
+    local mgr = get_mode_manager_impl_ptr("InternationalsManager")
+    if not mgr or mgr == 0 then return end
+    -- print(string.format("InternationalsManager %X", mgr))
+
+    local _begin = readPointer(mgr + InternationalsManager_STRUCT["to_offers"]) + InternationalsManager_STRUCT["offers_begin"]
+    local _end = _begin + 8
+    local _cap = _end + 8
+
+    if (bEnabled) then
+        local new_addr = readPointer(_begin) + InternationalsManager_STRUCT["offer_sz"]
+        if (new_addr > readPointer(_cap)) then
+            print("Can't create int job offer. Array cap reached")
+            return
+        end
+        writeBytes(readPointer(_begin), {
+            0x00, 0x00, 0x00, 0x00,
+            0x01, 0x00, 0x00, 0x00,
+            0x01, 0x00, 0x00, 0x00,
+            0xD8, 0x07, 0x00, 0x00,
+            0x01, 0x00, 0x00, 0x00,
+            0x01, 0x00, 0x00, 0x00,
+            0x34, 0x08, 0x00, 0x00,
+            0xFF, 0xFF, 0xFF, 0xFF,
+            0x00, 0x00, 0x00, 0x00,
+            0x00, 0x00, 0x00, 0x00,
+            0xFF, 0xFF, 0xFF, 0xFF,
+            0x00, 0x00, 0x00, 0x00,
+            0x00, 0x00, 0x00, 0x00,
+            0x00, 0x00, 0x00, 0x00,
+            0x00, 0x00, 0x00, 0x00
+        })
+
+        writeQword(_end, new_addr)
+    else
+        writeQword(_begin, readPointer(_end))
+    end
+end
+
+-- InternationalsManager END
+
 -- YouthPlayerUtil Start
 function ya_apply_pot_range(bEnabled)
     local mgr = get_mode_manager_impl_ptr("YouthPlayerUtil")
