@@ -73,11 +73,11 @@ AOB_PATTERNS = {
     OnStaminaChange1 = '88 51 11 3B 46 10',
     EditPlayerName = 'C6 44 24 20 00 C6 44 24 2F 0F 48 C7 44 24 30 00 00 00 00 80 78 01',
 
-    ChangeStadium = '41 8B B4 24 C4 18 00 00',
-    MatchHalfLength = '45 8B 84 24 E8 18 00 00',
-    MatchWeather = '83 F8 FF 0F 44 C6 48 81',
-    MatchTODDisplay = '44 8B 4F 40 C1 FA 05',
-    MatchTODReal = '49 8B C5 B9 02 00 00 00',
+    ChangeStadium = '41 8B AE C8 18 00 00',
+    MatchHalfLength = '45 8B 86 EC 18 00 00',
+    MatchWeather = '83 F8 FF 0F 44 85 98 00 00 00 89 85 98 00 00 00 8B',
+    MatchTODDisplay = '41 8B 9F 30 01 00 00 41',
+    MatchTODReal = '49 8B C5 41 8D 4E 02',
 
     AgreeTransferRequest = '44 8B E8 48 8B 89 98 01 00 00',
 
