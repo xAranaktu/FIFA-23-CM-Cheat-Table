@@ -58,11 +58,9 @@ AOB_PATTERNS = {
     DisableSubstitutions = '49 63 84 1E BC B6 00 00',
     IngameStamina = '48 8B F1 4C 8B F2 48 8B 89 58',
     UnlimitedSubstitutions = '48 69 CF 34 04 00 00',
-    EditReleaseClause = '8B 48 08 83 F9 FF 74 06 89 8B',
-    AllowTransferAppThTxt = '8B D8 83 F8 0E 77',
-    AllowTransferAppBtnClick = '44 8B F0 89 45 67',
-    AllowSign = '41 FF D1 89 45 50',
-    AllowLoanApp = '44 8B F8 89 45 50',
+    EditReleaseClause = '8B 48 08 83 F9 FF 74 06 89 8F',
+    AllowTransferApp = '48 89 5C 24 ?? 55 56 57 41 54 41 55 41 56 41 57 48 8D AC 24 ?? ?? ?? ?? 48 81 EC ?? ?? ?? ?? 48 8B 05 ?? ?? ?? ?? 48 33 C4 48 89 85 ?? ?? ?? ?? 48 8B 19 48 8B F1 48 8D 4D 88 44 89 44 24 ?? 44 8B EA E8 ?? ?? ?? ?? 48 63 45 88 33 FF',
+    AllowLoanApp = '48 89 5C 24 ?? 55 56 57 41 54 41 55 41 56 41 57 48 8D AC 24 ?? ?? ?? ?? 48 81 EC ?? ?? ?? ?? 48 8B 05 ?? ?? ?? ?? 48 33 C4 48 89 85 ?? ?? ?? ?? 48 8B 19 48 8B F1 48 8D 4D 88 44 89 44 24 ?? 44 8B E2 E8 ?? ?? ?? ?? 48 63 45 88',
     CustomManagerEditable = 'C7 85 C4 00 00 00 0F 27 00 00 39',
     ManagerNeverRetire = '8B AB 24 03 00 00 8B',
     UpdateManagerRating = '8B 00 4C 8D 9C 24 F8 00 00 00',
@@ -90,8 +88,7 @@ AOB_PATTERNS = {
     YouthAcademyGeneratePlayer = '48 8D 8C 24 80 00 00 00 E8 8D 68',
 
     FreezeLineup = '48 89 5C 24 ?? 48 89 74 24 ?? 57 48 83 EC 20 41 83 38 FF 49 8B F8 48 8B 01 8B F2 48 8B D9 75 0B 49 8B D0 FF 90',
-    ContractNeg = '48 8B 50 38 48 83 EA 40 49 FF 60 08 CC CC CC CC CC',
-    NegStatusCheck = 'FF 90 40 01 00 00 89 47 18',
+    NegStatusCheck = '48 8B 8C 24 E0 00 00 00 89',
     GameSettings = '49 63 CC 8B 04 C8',
 
 
@@ -103,20 +100,7 @@ AOB_PATTERNS = {
     CAM_H_ROTATE_SPEED_MUL = "F3 0F 11 83 AC 0B 00 00",
     CAM_Z_ROTATE_SPEED_MUL = "F3 0F 11 83 B4 0B 00 00 F3",
     STADIUM_BOUNDARY = "0F 10 32 0F 28 D6 0F C6 C0 00", -- XMM5?
-    CAM_Z_BOUNDARY = "66 0F 70 0A ?? 0F 28 05 ?? ?? ?? ?? 0F 2F C1 76",
-
-    CustomTransfers = '4C 8B C3 48 8B 01 74 0C FF 50 10',
-
-    -- FootballCompEng_Win64_retail.dll
-    -- FootballCompEng = {
-    --     MODULE_NAME = 'FootballCompEng_Win64_retail.dll',
-    --     AOBS = {
-    --         SimMatchSettings = '8B A8 A4 00 00 00',
-    --         Calendar = '41 8B C4 49 8B D4',
-    --         --MatchFixing = '48 8B 0B 48 8B 00',
-    --         --MatchFixingGoals = '48 8B 3C C8 48 85 FF 74 ?? 48 8B 4E 10'
-    --     }
-    -- }
+    CAM_Z_BOUNDARY = "F3 0F 10 15 ?? ?? ?? ?? 0F 2F 52 04 76 05 F3 0F 11 52"
 }
 
 DEFAULT_CFG = {
