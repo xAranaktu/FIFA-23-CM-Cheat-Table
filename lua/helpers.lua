@@ -353,6 +353,40 @@ end
 -- InternationalsManager END
 
 -- YouthPlayerUtil Start
+function _print_YouthPlayerUtil_addresses()
+    local mgr = get_mode_manager_impl_ptr("YouthPlayerUtil")
+    if not mgr or mgr == 0 then return end
+
+    local count = 4
+    local current_addr = readPointer(mgr + YOUTHPLAYERUTIL_STRUCT["settings_offset"]) + YOUTHPLAYERUTIL_STRUCT["pot_range_off"]
+    print("pot_range_off")
+    for i=1, count do
+        print(string.format("0x%X %d low", current_addr, count))
+        current_addr = current_addr + 4
+
+        print(string.format("0x%X %d high", current_addr, count))
+        current_addr = current_addr + 4
+    end
+
+    count = 4
+    current_addr = readPointer(mgr + YOUTHPLAYERUTIL_STRUCT["settings_offset"]) + YOUTHPLAYERUTIL_STRUCT["att_range_off"]
+    print("att_range_off")
+    for i=1, count do
+        print(string.format("0x%X %d low", current_addr, count))
+        current_addr = current_addr + 4
+
+        print(string.format("0x%X %d high", current_addr, count))
+        current_addr = current_addr + 4
+
+        print(string.format("0x%X %d sec low", current_addr, count))
+        current_addr = current_addr + 4
+
+        print(string.format("0x%X %d sec high", current_addr, count))
+        current_addr = current_addr + 4
+    end
+
+end
+
 function ya_apply_pot_range(bEnabled)
     local mgr = get_mode_manager_impl_ptr("YouthPlayerUtil")
     if not mgr or mgr == 0 then return end
@@ -386,6 +420,7 @@ function ya_apply_attr_range(bEnabled)
     local high_sec = readInteger("YAAttribRangeSecH")
 
     for i=1, count do
+        print()
         writeInteger(current_addr, low)
         current_addr = current_addr + 4
 
@@ -519,6 +554,8 @@ function ya_max_per_report()
     local max_per_report = readInteger("iMaxPerReport")
 
     for i=1, _max do
+        -- print(string.format("0x%X", current_addr))
+        
         writeInteger(current_addr, max_per_report)
         current_addr = current_addr + 4
     end
@@ -915,6 +952,16 @@ function get_field_offset_in_player_growth_system(field_name)
 
     return 0
 end
+
+function xp_to_attr(xp_val)
+    local xta = PlayerGrowthManager_Data["xp_to_attribute"]
+    for i=1, 99 do
+        if xta[i] >= xp_val then return i-1 end
+    end
+
+    return 99
+end
+
 
 function get_xp_to_apply_in_player_growth_system(field_name, new_value)
     -- Make sure new value is valid

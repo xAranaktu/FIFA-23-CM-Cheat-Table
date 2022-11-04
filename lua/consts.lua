@@ -45,10 +45,10 @@ AOB_PATTERNS = {
     GTNRevealPlayerData = '41 8B 8F 98 02 00 00 39',
     UnlimitedPlayerRelease = '8B 46 10 39 45 54',
     ReleasePlayerMsgBox = 'FF 94 24 C0 00 00 00 89 44 24 60',
-    ReleasePlayerFee = '41 8B 55 10 4C 63 F0',
-    ReleasePlayerFeeTwo = '49 63 C0 48 01 01',
+    ReleasePlayerFee = 'C7 48 8B 9C 24 38 01 00 00',
     HireScout = '89 45 58 48 8D 4D 90',
     YouthAcademyAllCountriesAvailable = '8B 0C 90 89 4C 24 48',
+    YAMaxPlayersPerReport = '46 8B 44 E6 40',
     YACountryIsBeingScouted = '80 FB 01 75 11 E8',
     SideManipulator = '48 8B 84 CF 18 01 00 00 83',
     PGMApplyXp = 'F3 0F 2C C0 41 01 04 24 48',
@@ -92,7 +92,7 @@ AOB_PATTERNS = {
     FreezeLineup = '48 89 5C 24 ?? 48 89 74 24 ?? 57 48 83 EC 20 41 83 38 FF 49 8B F8 48 8B 01 8B F2 48 8B D9 75 0B 49 8B D0 FF 90',
     ContractNeg = '48 8B 50 38 48 83 EA 40 49 FF 60 08 CC CC CC CC CC',
     NegStatusCheck = 'FF 90 40 01 00 00 89 47 18',
-    GameSettings = '49 63 CD 8B 34 C8',
+    GameSettings = '49 63 CC 8B 04 C8',
 
 
     -- Free fly camera
