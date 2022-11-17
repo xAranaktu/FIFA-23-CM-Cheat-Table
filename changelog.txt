@@ -1,3 +1,9 @@
+v23.1.1.1:
+    - Updated "fix_players_headmodels.lua"
+    - Fixed:
+        - "Free & Unlimited Releasing Players"
+        - "Gameplay" -> "Unlimited Substitutions (USER)"
+
 v23.1.1.0:
     - Fixed "Generate players with custom ID"
 
