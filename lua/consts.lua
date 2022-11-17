@@ -77,17 +77,14 @@ AOB_PATTERNS = {
     MatchTODDisplay = '41 8B 9F 30 01 00 00 41',
     MatchTODReal = '49 8B C5 41 8D 4E 02',
 
-    AgreeTransferRequest = '44 8B E8 48 8B 89 98 01 00 00',
-
-    YAMaxPerReport = '47 8B 44 FE 58',
     VProSkillPoints = '8B 48 04 89 8B 8C 06 00 00',
     CreatedPlayerTrainingXP = '49 8B 46 50 4D 8D 4E 40',
 
     GenNewYAReport = '3B 44 24 20 48 8D 4C 24 20',
     fnGenYAReport = '40 55 53 56 57 41 57 48 8D 6C 24 ?? 48 81 EC ?? ?? ?? ?? 48 8B 59 08 4C 8B F9 48 8D 4C 24',
-    YouthAcademyGeneratePlayer = '48 8D 8C 24 80 00 00 00 E8 8D 68',
+    YouthAcademyGeneratePlayer = '48 8D 8C 24 ?? ?? ?? ?? E8 ?? ?? ?? ?? 48 8D 4C 24 ?? E8 ?? ?? ?? ?? 4C 8D 5C 24 ?? 0F B6 C3 49 8B 5B 18 49 8B 73 20 49 8B 7B 28 49 8B E3 41 5E C3',
 
-    FreezeLineup = '48 89 5C 24 ?? 48 89 74 24 ?? 57 48 83 EC 20 41 83 38 FF 49 8B F8 48 8B 01 8B F2 48 8B D9 75 0B 49 8B D0 FF 90',
+    -- FreezeLineup = '48 89 5C 24 ?? 48 89 74 24 ?? 57 48 83 EC 20 41 83 38 FF 49 8B F8 48 8B 01 8B F2 48 8B D9 75 0B 49 8B D0 FF 90',
     NegStatusCheck = '48 8B 8C 24 E0 00 00 00 89',
     GameSettings = '49 63 CC 8B 04 C8',
 

@@ -30,7 +30,7 @@ function thisFormManager:remove_loading_panel()
 end
 
 function thisFormManager:load_images()
-    local stream = self:load_headshot(41)
+    local stream = self:load_headshot(158023)
     self.frm.PlayersEditorImg.Picture.LoadFromStream(stream)
     stream.destroy()
 
