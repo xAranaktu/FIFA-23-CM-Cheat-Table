@@ -1,3 +1,7 @@
+v23.1.1.2:
+    - Added 2 new traits to players editor, First Time Shots & Round the Keeper (thanks tokke001)
+    - Fixed changing formation in teams editor
+
 v23.1.1.1:
     - Updated "fix_players_headmodels.lua"
     - Fixed:
