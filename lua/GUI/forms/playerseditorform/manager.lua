@@ -1771,6 +1771,30 @@ function thisFormManager:get_components_description()
                 OnChange = fnOnChangeTrait
             }
         },
+        RoundTheKeeperCB = {
+            db_field = {
+                table_name = "players",
+                field_name = "trait2"
+            },
+            trait_bit = 3,
+            valGetter = fnTraitCheckbox,
+            OnSaveChanges = fnSaveTrait,
+            events = {
+                OnChange = fnOnChangeTrait
+            }
+        },
+        FirstTimeShotCB = {
+            db_field = {
+                table_name = "players",
+                field_name = "trait2"
+            },
+            trait_bit = 4,
+            valGetter = fnTraitCheckbox,
+            OnSaveChanges = fnSaveTrait,
+            events = {
+                OnChange = fnOnChangeTrait
+            }
+        },
         DivesIntoTacklesCB = {
             db_field = {
                 table_name = "players",
@@ -4550,7 +4574,9 @@ function thisFormManager:fut_copy_card_to_gui(player)
                 local trait2_comps = {
                     "",
                     "SaveswithFeetCB",
-                    "SetPlaySpecialistCB"
+                    "SetPlaySpecialistCB",
+                    "RoundTheKeeperCB",
+                    "FirstTimeShotCB"
                 }
                 local trait2 = toBits(tonumber(values[CLONE_COLUMNS['trait2']]))
                 local index = 1
@@ -5250,7 +5276,9 @@ function thisFormManager:onCMCopyPlayerBtnClick(sender)
         CautiousWithCrossesCB = true,
         ComesForCrossessCB = true,
         SaveswithFeetCB = true,
-        SetPlaySpecialistCB = true
+        SetPlaySpecialistCB = true,
+        RoundTheKeeperCB = true,
+        FirstTimeShotCB = true
     }
 
     if self.frm.CMCopyAgeCB.State == 1 then
